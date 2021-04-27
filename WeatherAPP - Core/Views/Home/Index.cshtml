@@ -11,7 +11,7 @@
             <form>
                 <div class="form-group">
                     <input type="text" id="City" class="form-control mb-2" placeholder="Miasto">
-                    <button type="submit" id="btnSubmit" class="btn btn-outline-primary mb-2">Szukaj</button>
+                    <button type="submit" onclick="btnSubmit()" class="btn btn-outline-primary mb-2">Szukaj</button>
                 </div>
             </form>
             
@@ -79,11 +79,36 @@
 
 <script>
 
+    function btnSubmit() {
+        var cityname = $("#City").val();
+        if (cityname.length > 0) {
+            $.ajax({
+                url: "http://localhost:44334/Home/WeatherDetail?City=" + cityname,
+                type: "POST",
+                success: function (rsltval) {
+                    var data = JSON.parse(rsltval);
+                    console.log(data);
+                    $("#lblCity").html(data.City);
+                    $("#lblCountry").text(data.Country);
+                    $("#lblLat").text(data.Lat);
+                    $("#lblLon").text(data.Lon);
+                    $("#lblDescription").text(data.Description);
+                    $("#lblHumidity").text(data.Humidity);
+                    $("#lblTempFeelsLike").text(data.TempFeelsLike);
+                    $("#lblTemp").text(data.Temp);
+                    $("#lblTempMax").text(data.TempMax);
+                    $("#lblTempMin").text(data.TempMin);
+                    $("#imgWeatherIconUrl").attr("src", "http://openweathermap.org/img/w/" + data.WeatherIcon + ".png");
+                    //data - response from server
+                },
+                error: function () {
 
-    document.getElementById("btnSubmit").onclick = function () {
-        { myFunction() };
-
-        function myFunction() {
-            document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+                }
+            });
         }
+        else {
+            alert("City Not Found");
+        }
+    };
+    
 </script>
