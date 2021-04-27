@@ -10,8 +10,8 @@
             <h4>Znajdź pogodę dla swojego miasta</h4>
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control mb-2" placeholder="Miasto">
-                    <button type="submit" class="btn btn-outline-primary mb-2">Szukaj</button>
+                    <input type="text" id="City" class="form-control mb-2" placeholder="Miasto">
+                    <button type="submit" id="btnSubmit" class="btn btn-outline-primary mb-2">Szukaj</button>
                 </div>
             </form>
             
@@ -33,3 +33,57 @@
         </div>
     </div>
 </div>
+
+<div>
+    <h2>Weather Forecast</h2>
+    <table>
+        <tr>
+            <td>Weather Symbol Icon <img id="imgWeatherIconUrl" src="" title="Weather Icon" /></td>
+        </tr>
+        <tr>
+            <td>
+                <strong>City: </strong>
+                <span id="lblCity"></span>&nbsp;&nbsp;,
+                <span id="lblCountry"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Latitude: </strong>
+                <label id="lblLat"></label><br />
+                <strong>Longitude: </strong>
+                <label id="lblLon"></label>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Description:</strong>
+                <label id="lblDescription"></label><br />
+                <strong>Humidity:</strong>
+                <label id="lblHumidity"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Temperature (Feels Like)<label id="lblTempFeelsLike"></label><br />
+                Temperature <label id="lblTemp"></label><br />
+                Temperature (Min)<label id="lblTempMin"></label><br />
+                Temperature (Max)<label id="lblTempMax"></label><br />
+            </td>
+        </tr>
+
+
+    </table>
+</div>
+
+<script>
+
+
+    document.getElementById("btnSubmit").onclick = function () {
+        { myFunction() };
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+        }
+</script>
