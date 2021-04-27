@@ -83,12 +83,12 @@
         var cityname = $("#City").val();
         if (cityname.length > 0) {
             $.ajax({
-                url: "http://localhost:44334/Home/WeatherDetail?City=" + cityname,
+                url: "localhost:44334/Home/WeatherDetail?City=" + cityname,
                 type: "POST",
                 success: function (rsltval) {
                     var data = JSON.parse(rsltval);
                     console.log(data);
-                    $("#lblCity").html(data.City);
+                    ("#lblCity").html(data.City);
                     $("#lblCountry").text(data.Country);
                     $("#lblLat").text(data.Lat);
                     $("#lblLon").text(data.Lon);
@@ -99,7 +99,7 @@
                     $("#lblTempMax").text(data.TempMax);
                     $("#lblTempMin").text(data.TempMin);
                     $("#imgWeatherIconUrl").attr("src", "http://openweathermap.org/img/w/" + data.WeatherIcon + ".png");
-                    //data - response from server
+                    
                 },
                 error: function () {
 
