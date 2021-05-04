@@ -21,7 +21,7 @@
             <td>@Model.Main.Temperature °C</td>
             <td>@Model.Main.Humidity %</td>
             <td>@Model.Main.Percepita °C</td>
-            <td>@Model.Wind.Speed Nodi</td>
+            <td>@Model.Wind.Speed Km/h</td>
             <td>@Model.Main.Pressure</td>
         </tr>
 
@@ -31,15 +31,7 @@
                 <br />
                                 <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
                                                 <br />
-                                                                @switch (Model.Weather[0].Visibility.ToString())
-                                                                {
-                                                                    case "Clear":
-<center> <img src="~/Images/sunny.jpg" height="550" width="550"> </center> ; break;
-                                                                    case "Clouds":
-<center> <img src="~/Images/cloudy.jpg" height="550" width="550"> </center> ; break;
-                                                                    case "Rain":
-<center>  <img src="~/Images/rainy.jpg" height="550" width="550"> </center>; break;
-                                                                } }
+                                                                }
                                                                             catch
                                                                             {
 
