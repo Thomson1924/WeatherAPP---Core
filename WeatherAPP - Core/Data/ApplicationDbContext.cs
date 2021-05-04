@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WeatherAPP___Core.Models;
 
 namespace WeatherAPP___Core.Data
 {
@@ -12,5 +13,7 @@ namespace WeatherAPP___Core.Data
             : base(options)
         {
         }
+
+        public DbSet<Main> mains { get; set; }
     }
 }
