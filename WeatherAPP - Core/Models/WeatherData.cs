@@ -9,10 +9,10 @@ namespace WeatherAPP___Core.Models
 
         [JsonProperty("coord")]
         public Coord Coord { get; set; }
-
-        [JsonProperty("weather")]
+        
+       [JsonProperty("weather")]
         public Weather[] Weather { get; set; }
-
+       
         [JsonProperty("base")]
         public string Base { get; set; }
 
@@ -56,6 +56,7 @@ namespace WeatherAPP___Core.Models
         [JsonProperty("lat")]
         public double Lat { get; set; }
     }
+    
 
     public class Main
     {
@@ -113,7 +114,7 @@ namespace WeatherAPP___Core.Models
         [JsonProperty("icon")]
         public string Icon { get; set; }
     }
-
+    
     public class Wind
     {
         [JsonProperty("speed")]
