@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 
 namespace WeatherAPP___Core.Models
 {
@@ -77,6 +78,9 @@ namespace WeatherAPP___Core.Models
 
         [JsonProperty("feels_like")]
         public double Percepita { get; set; }
+        
+        public string UserId { get; set; }
+        public IdentityUser User { get; set; }
     }
 
     public class Sys
