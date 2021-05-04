@@ -1,4 +1,4 @@
-﻿@model WeatherData
+﻿@model WeatherAPP___Core.Models.HistoricalData
 @{ Layout = "_Layout"; ViewBag.Title = "Meteo";}
 
 @try
@@ -17,7 +17,6 @@
                             <td>@Model.Wind.Speed Km/h</td>
                             <td>@Model.Main.Pressure hPa</td>
                             <td>@Model.Sys.Country</td>
-                            <td>@Model.Sys.Type</td>
                         </tr>
 
 
@@ -26,12 +25,13 @@
                                 <br />
                                                 <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
                                                                 <a asp-action="" class="btn btn-success">Click</a>
-                                                                                <br /> }
-                                                                                            catch
-                                                                                            {
+                                                                                <br />
+ }
+                                                                            catch
+                                                                            {
 
-                                                                                <h1>I am sorry, I can't find your city :(</h1>
+                                                                <h1>I am sorry, I can't find your city :(</h1>
 
-                                                                                                <br />
-                                                                                                                <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
-                                                                                                                                <a asp-action="" class="btn btn-success">Click</a>}
+                                                                                <br />
+                                                                                                <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
+                                                                                                                <a asp-action="" class="btn btn-success">Click</a>}

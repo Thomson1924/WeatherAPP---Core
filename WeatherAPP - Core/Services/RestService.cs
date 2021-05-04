@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WeatherAPP___Core.Models;
 
@@ -38,6 +36,25 @@ namespace WeatherAPP___Core.Services
             }
 
             return weatherData;
+        }
+        public async Task<WeatherData> GetHistoricalData(string query)
+        {
+            WeatherData historicalData = null;
+            try
+            {
+                var response = await _client.GetAsync(query);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    historicalData = JsonConvert.DeserializeObject<WeatherData>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            return historicalData;
         }
     }
 }

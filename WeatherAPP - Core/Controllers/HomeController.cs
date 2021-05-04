@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using WeatherAPP___Core.Models;
 using WeatherAPP___Core.Services;
 
-namespace RagoWeather.Controllers
+namespace WeatherAPP___Core.Controllers
 {
     public class HomeController : Controller
     {
@@ -44,6 +44,13 @@ namespace RagoWeather.Controllers
         {
             string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results = _rs.GetWeatherData(prova).Result;
+
+            return View(results);
+        }
+        public IActionResult HistoricalData(string id)
+        {
+            string prova = "http://history.openweathermap.org/data/2.5/history/city?=+" + id + "&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            HistoricalData results = _rs.GetHistoricalData(prova).Result;
 
             return View(results);
         }
