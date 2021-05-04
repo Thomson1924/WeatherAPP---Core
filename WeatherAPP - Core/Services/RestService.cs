@@ -23,6 +23,7 @@ namespace WeatherAPP___Core.Services
         public async Task<WeatherData> GetWeatherData(string query)
         {
             WeatherData weatherData = null;
+        
             try
             {
                 var response = await _client.GetAsync(query);
