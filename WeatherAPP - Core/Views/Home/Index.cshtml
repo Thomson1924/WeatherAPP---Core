@@ -20,11 +20,9 @@
             <script type="text/javascript">
         $("#WeatherSearch").click(function () {
             var txtVal = $("#usr").val();
-            window.location = "@Url.Action("HistoricalData","Home")" +
+            window.location = "@Url.Action("WeatherData","Home")" +
                 "/" + txtVal;
-           /* if ("#usr".val().length == 0) {
-                alert("Empty City");
-            }*/
+           
         });
             </script>
         }

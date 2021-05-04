@@ -47,12 +47,6 @@ namespace WeatherAPP___Core.Controllers
 
             return View(results);
         }
-        public IActionResult HistoricalData(string id)
-        {
-            string prova = "http://history.openweathermap.org/data/2.5/history/city?=+" + id + "&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
-            HistoricalData results = _rs.GetHistoricalData(prova).Result;
-
-            return View(results);
-        }
+       
     }
 }
