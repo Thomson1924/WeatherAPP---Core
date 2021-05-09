@@ -1,45 +1,5 @@
-﻿@model WeatherData
-@{ Layout = "_Layout"; ViewBag.Title = "Weather";}
-
-@try
-{
-    <h2>Weather Info @Model.Title</h2> string tipoMeteo = "";
-    switch (Model.Weather[0].Visibility.ToString())
-    {
-        case "Rain": tipoMeteo = "Rainy 🌧"; break;
-        case "Clear": tipoMeteo = "Sunny! ☀"; break;
-        case "Clouds": tipoMeteo = "Cloudy ⛅"; break;
-        case "Snowy": tipoMeteo = "Snowy ❄️"; break;
-
-    }
-
-
-    <table class="table table-sm table-striped table-bordered m-2">
-        <thead><tr><th>Weather</th><th>Temperature</th><th>Humidity</th><th>Perceived Temperature</th><th>Wind</th><th>Pressure</th><th>Country</th></tr></thead>
-        <tbody>
-
-            <tr>
-                <td>@tipoMeteo </td>
-                <td>@Model.Main.Temperature °C</td>
-                <td>@Model.Main.Humidity %</td>
-                <td>@Model.Main.Percepita °C</td>
-                <td>@Model.Wind.Speed Km/h</td>
-                <td>@Model.Main.Pressure</td>
-                <td>@Model.Sys.Country</td>
-
-            </tr>
-
-
-        </tbody>
-    </table>
-    <br />
-    <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
-    <br />
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
-catch
-{
-
-    <h1>I am sorry, I can't find your city :(</h1>
-
-    <br />
-    <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>}

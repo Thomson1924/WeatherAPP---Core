@@ -47,5 +47,19 @@ namespace RagoWeather.Controllers
 
             return View(results);
         }
+        public IActionResult HistoricalData(string id)
+        {
+            string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            WeatherData results = _rs.GetWeatherData(prova).Result;
+
+            return View(results);
+        }
+        public IActionResult ForecastData(string id)
+        {
+            string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            WeatherData results = _rs.GetWeatherData(prova).Result;
+
+            return View(results);
+        }
     }
 }
