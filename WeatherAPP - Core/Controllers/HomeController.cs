@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WeatherAPP___Core.Data;
+using WeatherAPP___Core.Interfaces;
 using WeatherAPP___Core.Models;
 using WeatherAPP___Core.Services;
 
@@ -18,11 +19,13 @@ namespace RagoWeather.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         public RestService _rs { get; set; }
-
-        public HomeController(ILogger<HomeController> logger)
+        public readonly ISave _save;
+        public HomeController(ILogger<HomeController> logger, ISave save)
         {
             _logger = logger;
+            _save = save;
             _rs = new RestService();
+
         }
 
         public IActionResult Index()
@@ -47,26 +50,8 @@ namespace RagoWeather.Controllers
         {
             string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results =  _rs.GetWeatherData(prova).Result;
-
+            _save.SaveAsync(results.Main);
             return View(results);
-        }
-
-        public void SaveWeather(Main main)
-        {
-            foreach (var item in (IEnumerable <Main>) main)
-            {
-                var weather = new List<Main>
-                {
-                    new Main { Temperature = item.Temperature, Humidity=item.Humidity, Id=item.Id, Percepita=item.Percepita, Pressure=item.Pressure,
-                        TempMax=item.TempMax, TempMin=item.TempMin, User=item.User, UserId=item.UserId }
-                };
-
-                using (ApplicationDbContext context = new ApplicationDbContext())
-                {
-                    context.mains.AddRange(weather);
-                    context.SaveChanges();
-                }
-            }
         }
     }
 }
