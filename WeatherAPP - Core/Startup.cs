@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WeatherAPP___Core.Data;
+using WeatherAPP___Core.Interfaces;
+using WeatherAPP___Core.Services;
 
 namespace WeatherAPP___Core
 {
@@ -28,7 +30,7 @@ namespace WeatherAPP___Core
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            services.AddScoped<ISave, Save>();
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
                 facebookOptions.AppId = this.Configuration["Authentication:Facebook:AppId"];
