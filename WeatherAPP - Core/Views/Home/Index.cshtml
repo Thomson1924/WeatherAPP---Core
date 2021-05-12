@@ -11,16 +11,12 @@
 <html>
 <body>
 
-    <p>Click the button to get your coordinates.</p>
-
-    <button onclick="getLocation()">Pobierz Lokalizację!</button>
-
-    <p id="Lokalizacja">
-        @Html.ActionLink("Wykoknaj akcje","Result", new LocationModel { Latitude = 1, Longitude = 2 });
-    </p>
+    
 
     <script>
-        var loc = document.getElementById("Lokalizacja");
+        var loc = document.getElementById("Lat");
+        var loc2 = document.getElementById("Lon");
+        var locform = document.getElementById("LocationForm");
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -30,8 +26,9 @@
             }
         }
         function showPosition(position) {
-            loc.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
+            loc.value = position.coords.latitude;
+            loc2.value = position.coords.longitude;
+            locform.submit();
         }
     </script>
 </body>
