@@ -6,13 +6,23 @@
     <h1 class="display-4">Test pobierania lokalizacji</h1>
 </div>
 
-
-
 <html>
-<body>
-
-    
-
+<body onload="getLocation()">
+    <div class="row" style="display:none;">
+        <div class="col-md-4">
+            <form asp-action="Result" method="get" enctype="multipart/form-data" id="LocationForm">
+                <div class="form-group">
+                    <input type="text" name="Latitude" id="Lat" class="form-control" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Longitude" id="Lon" class="form-control" value="" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+@section Scripts{
     <script>
         var loc = document.getElementById("Lat");
         var loc2 = document.getElementById("Lon");
@@ -31,6 +41,6 @@
             locform.submit();
         }
     </script>
-</body>
-</html>
+}
+
 
