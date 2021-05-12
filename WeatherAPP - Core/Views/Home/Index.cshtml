@@ -22,6 +22,7 @@
     </div>
 </body>
 </html>
+
 @section Scripts{
     <script>
         var loc = document.getElementById("Lat");
@@ -35,11 +36,13 @@
                 loc.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
+
         function showPosition(position) {
             loc.value = position.coords.latitude;
             loc2.value = position.coords.longitude;
             locform.submit();
         }
+
     </script>
 }
 
