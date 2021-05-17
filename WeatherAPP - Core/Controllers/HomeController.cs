@@ -15,7 +15,7 @@ using WeatherAPP___Core.Models;
 using WeatherAPP___Core.Models.ForecastData;
 using WeatherAPP___Core.Services;
 
-namespace RagoWeather.Controllers
+namespace WeatherAPP___Core.Controllers
 {
     public class HomeController : Controller 
     {
@@ -76,5 +76,6 @@ namespace RagoWeather.Controllers
 
             return View(results);
         }
+       
     }
 }

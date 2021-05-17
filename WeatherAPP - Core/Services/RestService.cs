@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WeatherAPP___Core.Models;
 using WeatherAPP___Core.Models.ForecastData;
@@ -50,7 +48,6 @@ namespace WeatherAPP___Core.Services
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     forecastData = JsonConvert.DeserializeObject<Root>(content);
-                    
                 }
             }
             catch (Exception ex)

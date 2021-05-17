@@ -1,8 +1,9 @@
-﻿@model WeatherData
+@model WeatherData
 @{ Layout = "_Layout"; ViewBag.Title = "Weather";}
 
 @try
 {
+
 <h2>Weather Info @Model.Title</h2> string tipoMeteo = "";
                 switch (Model.Weather[0].Visibility.ToString())
                 {
@@ -32,14 +33,12 @@
 
     </tbody>
 </table>
-                <br />
-                                <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
-                                                <br />
-                                                                }
-                                                                            catch
-                                                                            {
-
-                                                                <h1>I am sorry, I can't find your city :(</h1>
-
-                                                                                <br />
-                                                                                                <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>}
+  <br/>
+ <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
+ <br />
+   }
+    catch
+     {
+<h1>I am sorry, I can't find your city :(</h1>
+<br />
+ <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>}

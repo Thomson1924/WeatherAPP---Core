@@ -1,3 +1,4 @@
+
 @{ ViewData["Title"] = "WeatherApp"; }
 
 <div class="text-center">
@@ -12,13 +13,35 @@
 </div>
 
 
-@section Scripts {
-    <script type="text/javascript">
+
+        @section Scripts {
+            <script type="text/javascript">
         $("#WeatherSearch").click(function () {
             var txtVal = $("#usr").val();
             window.location = "@Url.Action("WeatherData","Home")" +
-                              "/" + txtVal;
+                "/" + txtVal;
+           
         });
+
+            </script>
+        }
+
+        <div class="col-6">
+            <h4>Zaloguj się za pomocą Facebook'a aby zapisać swoje wyszukiwania</h4>
+            <hr />
+            <button class="btn btn-success">
+                <i class="fab fa-facebook"></i>
+                <span>Zaloguj</span>
+            </button>
+
+            <button class="btn btn-danger">
+                <i class="fab fa-facebook"></i>
+                <span>Zarejestruj</span>
+            </button>
+
+        </div>
+    </div>
+</div>
     </script>
     <script type="text/javascript">
         $("#WeatherHistorical").click(function () {
@@ -35,3 +58,4 @@
         });
     </script>
 }
+
