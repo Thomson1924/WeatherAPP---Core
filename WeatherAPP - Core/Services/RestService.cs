@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WeatherAPP___Core.Models;
-
+using WeatherAPP___Core.Models.ForecastData;
 
 namespace WeatherAPP___Core.Services
 {
@@ -21,6 +21,7 @@ namespace WeatherAPP___Core.Services
         public async Task<WeatherData> GetWeatherData(string query)
         {
             WeatherData weatherData = null;
+        
             try
             {
                 var response = await _client.GetAsync(query);
@@ -37,16 +38,16 @@ namespace WeatherAPP___Core.Services
 
             return weatherData;
         }
-        public async Task<WeatherData> GetHistoricalData(string query)
+        public async Task<Models.ForecastData.Root> GetForecastData(string query)
         {
-            WeatherData historicalData = null;
+            Root forecastData = null;
             try
             {
                 var response = await _client.GetAsync(query);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    historicalData = JsonConvert.DeserializeObject<WeatherData>(content);
+                    forecastData = JsonConvert.DeserializeObject<Root>(content);
                 }
             }
             catch (Exception ex)
@@ -54,7 +55,7 @@ namespace WeatherAPP___Core.Services
                 throw (ex);
             }
 
-            return historicalData;
+            return forecastData;
         }
     }
 }
