@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using WeatherAPP___Core.Data;
 using WeatherAPP___Core.Interfaces;
 using WeatherAPP___Core.Models;
+using WeatherAPP___Core.Models.ForecastData;
 using WeatherAPP___Core.Services;
 
 namespace RagoWeather.Controllers
@@ -51,11 +52,28 @@ namespace RagoWeather.Controllers
 
         public IActionResult WeatherData(string id)
         {
-            string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
-            WeatherData results =  _rs.GetWeatherData(prova).Result;
-            results.Main.User = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
-                
+        
+            string prova = "https://api.openweathermap.org/data/2.5/weather?q=" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            WeatherData results = _rs.GetWeatherData(prova).Result;
+
+            results.Main.User = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;   
             _save.SaveAsync(results.Main);
+
+            return View(results);
+        }
+        public IActionResult HistoricalData(string id)
+        {
+            string prova = "https://api.openweathermap.org/data/2.5/weather?q=" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            WeatherData results = _rs.GetWeatherData(prova).Result;
+
+            return View(results);
+        }
+        public IActionResult ForecastData(string id)
+        {
+            string prova = "https://api.openweathermap.org/data/2.5/forecast?q=" + id + "&mode=json&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            Root results = _rs.GetForecastData(prova).Result;
+
+
             return View(results);
         }
     }

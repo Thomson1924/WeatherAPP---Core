@@ -1,4 +1,4 @@
-﻿@{ ViewData["Title"] = "Rago Weather"; }
+@{ ViewData["Title"] = "WeatherApp"; }
 
 <div class="text-center">
     <h1 class="display-4">Have a Sunny Day!</h1>
@@ -6,7 +6,9 @@
     <label for="usr">Insert your City</label>
     <input type="text" class="form-control" id="usr" text-center>
     <br />
-    <input class="btn btn-info" id="WeatherSearch" value="Check the weather!" />
+    <input type="button" class="btn btn-info" id="WeatherHistorical" value="Get Historical Weather" />
+    <input type="button" class="btn btn-info" id="WeatherSearch" value="Check the weather" />
+    <input type="button" class="btn btn-info" id="WeatherForecast" value="Get Forecast" />
 </div>
 
 
@@ -15,6 +17,20 @@
         $("#WeatherSearch").click(function () {
             var txtVal = $("#usr").val();
             window.location = "@Url.Action("WeatherData","Home")" +
+                              "/" + txtVal;
+        });
+    </script>
+    <script type="text/javascript">
+        $("#WeatherHistorical").click(function () {
+            var txtVal = $("#usr").val();
+            window.location = "@Url.Action("HistoricalData","Home")" +
+                              "/" + txtVal;
+        });
+    </script>
+    <script type="text/javascript">
+        $("#WeatherForecast").click(function () {
+            var txtVal = $("#usr").val();
+            window.location = "@Url.Action("ForecastData","Home")" +
                               "/" + txtVal;
         });
     </script>
