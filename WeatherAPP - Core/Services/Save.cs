@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WeatherAPP___Core.Data;
 using WeatherAPP___Core.Interfaces;
@@ -18,13 +21,10 @@ namespace WeatherAPP___Core.Services
 
         public async Task<bool> SaveAsync(Main main)
         {
-            
-            
-                _context.Add(main);
-               await _context.SaveChangesAsync();
+            _context.Add(main); 
+            await _context.SaveChangesAsync();
 
-            return true;
-            
+            return true; 
         }
     }
 }

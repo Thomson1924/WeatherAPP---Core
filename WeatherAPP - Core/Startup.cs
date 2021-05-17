@@ -31,6 +31,7 @@ namespace WeatherAPP___Core
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddScoped<ISave, Save>();
+            services.AddHttpContextAccessor();
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
                 facebookOptions.AppId = this.Configuration["Authentication:Facebook:AppId"];

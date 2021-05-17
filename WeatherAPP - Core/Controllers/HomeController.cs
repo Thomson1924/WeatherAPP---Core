@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -20,11 +21,13 @@ namespace RagoWeather.Controllers
         private readonly ILogger<HomeController> _logger;
         public RestService _rs { get; set; }
         public readonly ISave _save;
-        public HomeController(ILogger<HomeController> logger, ISave save)
+        private readonly UserManager<IdentityUser> _userManager;
+        public HomeController(ILogger<HomeController> logger, ISave save, UserManager<IdentityUser> userManager)
         {
             _logger = logger;
             _save = save;
             _rs = new RestService();
+            _userManager = userManager;
 
         }
 
@@ -50,6 +53,8 @@ namespace RagoWeather.Controllers
         {
             string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results =  _rs.GetWeatherData(prova).Result;
+            results.Main.User = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+                
             _save.SaveAsync(results.Main);
             return View(results);
         }
