@@ -2,6 +2,28 @@
 @{ ViewData["Title"] = "WeatherApp"; }
 
 <div class="text-center">
+
+    <h1 class="display-4">Test pobierania lokalizacji</h1>
+</div>
+/*
+<html>
+<body onload="getLocation()">
+    <div class="row" style="display:none;">
+        <div class="col-md-4">
+            <form asp-action="Result" method="get" enctype="multipart/form-data" id="LocationForm">
+                <div class="form-group">
+                    <input type="text" name="Latitude" id="Lat" class="form-control" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Longitude" id="Lon" class="form-control" value="" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+*/
+
     <h1 class="display-4">Have a Sunny Day!</h1>
     <br />
     <label for="usr">Insert your City</label>
@@ -56,6 +78,26 @@
             window.location = "@Url.Action("ForecastData","Home")" +
                               "/" + txtVal;
         });
+    </script>
+<script>
+        var loc = document.getElementById("Lat");
+        var loc2 = document.getElementById("Lon");
+        var locform = document.getElementById("LocationForm");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                loc.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            loc.value = position.coords.latitude;
+            loc2.value = position.coords.longitude;
+            locform.submit();
+        }
+
     </script>
 }
 
