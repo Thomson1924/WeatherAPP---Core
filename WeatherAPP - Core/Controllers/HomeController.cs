@@ -70,7 +70,7 @@ namespace WeatherAPP___Core.Controllers
         }
         public IActionResult HistoricalData(string id)
         {
-            string prova = "https://history.openweathermap.org/data/2.5/aggregated/year?q=Skoczow,PL&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            string prova = "https://history.openweathermap.org/data/2.5/aggregated/year?q=" + id + "&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             Rooth results = _rs.GetHistoricalData(prova).Result;
 
             return View(results);

@@ -6,23 +6,58 @@ using System.Threading.Tasks;
 namespace WeatherAPP___Core.Models.HistoricalData
 
 {
-   
+    
 
-        public class Temp
+
+    public class Temp
+    {
+        
+        public double record_min { get; set; }
+        public double record_max { get; set; }
+        public double average_min { get; set; }
+        public double average_max { get; set; }
+        public double median { get; set; }
+        public double mean { get; set; }
+        public double p25 { get; set; }
+        public double p75 { get; set; }
+        public double st_dev { get; set; }
+        public int num { get; set; }
+
+        public double m_value
         {
-            public double record_min { get; set; }
-           
-            public double record_max { get; set; }
-            public double average_min { get; set; }
-            public double average_max { get; set; }
-            public double median { get; set; }
-            public double mean { get; set; }
-            public double p25 { get; set; }
-            public double p75 { get; set; }
-            public double st_dev { get; set; }
-            public int num { get; set; }
+            get
+            {
+                return median;
+            }
+            set
+            {
+                m_value = median;
+            }
+        }
+        public double celsius
+        {
+            get
+            {
+                return (m_value - 273.15);
+            }
+            set
+            {
+                celsius = (value - 273.15);
+            }
+        }
+        public double round
+        {
+            get
+            {
+                return celsius;
+            }
+            set => round = Math.Round(celsius, 2);
         }
 
+
+    }
+
+     
         public class Pressure
         {
             public int min { get; set; }
