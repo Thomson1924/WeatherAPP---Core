@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WeatherAPP___Core.Models;
+using WeatherAPP___Core.Models.ForecastData;
 using WeatherAPP___Core.Services;
 
 namespace RagoWeather.Controllers
@@ -42,14 +43,14 @@ namespace RagoWeather.Controllers
 
         public IActionResult WeatherData(string id)
         {
-            string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            string prova = "https://api.openweathermap.org/data/2.5/weather?q=" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results = _rs.GetWeatherData(prova).Result;
 
             return View(results);
         }
         public IActionResult HistoricalData(string id)
         {
-            string prova = "https://api.openweathermap.org/data/2.5/weather?q=+" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+            string prova = "https://api.openweathermap.org/data/2.5/weather?q=" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results = _rs.GetWeatherData(prova).Result;
 
             return View(results);
@@ -57,7 +58,8 @@ namespace RagoWeather.Controllers
         public IActionResult ForecastData(string id)
         {
             string prova = "https://api.openweathermap.org/data/2.5/forecast?q=" + id + "&mode=json&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
-            WeatherData results = _rs.GetWeatherData(prova).Result;
+            Root results = _rs.GetForecastData(prova).Result;
+
 
             return View(results);
         }
