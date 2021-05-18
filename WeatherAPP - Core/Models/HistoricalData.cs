@@ -22,37 +22,7 @@ namespace WeatherAPP___Core.Models.HistoricalData
         public double p75 { get; set; }
         public double st_dev { get; set; }
         public int num { get; set; }
-
-        public double m_value
-        {
-            get
-            {
-                return median;
-            }
-            set
-            {
-                m_value = median;
-            }
-        }
-        public double celsius
-        {
-            get
-            {
-                return (m_value - 273.15);
-            }
-            set
-            {
-                celsius = (value - 273.15);
-            }
-        }
-        public double round
-        {
-            get
-            {
-                return celsius;
-            }
-            set => round = Math.Round(celsius, 2);
-        }
+       
 
 
     }
