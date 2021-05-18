@@ -45,17 +45,17 @@ namespace WeatherAPP___Core.Controllers
             return View();
         }
 
-       // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
 
-       /* public IActionResult Result(LocationModel location)
+        public IActionResult Result(LocationModel location)
         {
             return View();
-        }*/
+        }
 
         public IActionResult WeatherData(string id)
         {

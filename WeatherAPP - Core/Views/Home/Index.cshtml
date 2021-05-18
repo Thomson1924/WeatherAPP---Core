@@ -1,5 +1,28 @@
 @{ ViewData["Title"] = "WeatherApp"; }
 
+
+
+<div class="text-center">
+
+<h1 class="display-4">Test pobierania lokalizacji</h1>
+</div>
+<html>
+<body onload="getLocation()">
+    <div class="row" style="display:none;">
+        <div class="col-md-4">
+            <form asp-action="Result" method="get" enctype="multipart/form-data" id="LocationForm">
+                <div class="form-group">
+                    <input type="text" name="Latitude" id="Lat" class="form-control" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Longitude" id="Lon" class="form-control" value="" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
 <div class="text-center">
     <h1 class="display-4">Have a Sunny Day!</h1>
     <br />
@@ -9,6 +32,25 @@
     <input type="button" class="btn btn-info" id="WeatherHistorical" value="Get Historical Weather" />
     <input type="button" class="btn btn-info" id="WeatherSearch" value="Check the weather" />
     <input type="button" class="btn btn-info" id="WeatherForecast" value="Get Forecast" />
+</div>
+
+
+
+
+
+<div class="col-6">
+    <h4>Zaloguj siê za pomoc¹ Facebook'a aby zapisaæ swoje wyszukiwania</h4>
+    <hr />
+    <button class="btn btn-success">
+        <i class="fab fa-facebook"></i>
+        <span>Zaloguj</span>
+    </button>
+
+    <button class="btn btn-danger">
+        <i class="fab fa-facebook"></i>
+        <span>Zarejestruj</span>
+    </button>
+
 </div>
 
 
@@ -33,5 +75,26 @@
             window.location = "@Url.Action("ForecastData","Home")" +
                               "/" + txtVal;
         });
+    </script>
+
+    <script>
+        var loc = document.getElementById("Lat");
+        var loc2 = document.getElementById("Lon");
+        var locform = document.getElementById("LocationForm");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                loc.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            loc.value = position.coords.latitude;
+            loc2.value = position.coords.longitude;
+            locform.submit();
+        }
+
     </script>
 }
