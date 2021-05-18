@@ -78,7 +78,7 @@ namespace RagoWeather.Controllers
 
             return View(results);
         }
-
+        [Authorize]
         public IActionResult MyWeather()
         {
             /*WeatherAPP___Core.Models.Main viewData = new WeatherAPP___Core.Models.Main();
@@ -94,7 +94,9 @@ namespace RagoWeather.Controllers
 
                 viewData.(element);
             }*/
-            var viewData = _context.mains.ToList();
+            var currentUser = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+
+            var viewData = _context.mains.Where(q => q.User == currentUser).Select(p => p).ToList();
 
             return View(viewData);
         }
