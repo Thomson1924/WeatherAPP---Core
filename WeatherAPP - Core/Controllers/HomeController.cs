@@ -23,12 +23,14 @@ namespace RagoWeather.Controllers
         public RestService _rs { get; set; }
         public readonly ISave _save;
         private readonly UserManager<IdentityUser> _userManager;
-        public HomeController(ILogger<HomeController> logger, ISave save, UserManager<IdentityUser> userManager)
+        public ApplicationDbContext _context;
+        public HomeController(ILogger<HomeController> logger, ISave save, UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
             _logger = logger;
             _save = save;
             _rs = new RestService();
             _userManager = userManager;
+            _context = context;
 
         }
 
@@ -75,6 +77,26 @@ namespace RagoWeather.Controllers
 
 
             return View(results);
+        }
+
+        public IActionResult MyWeather()
+        {
+            /*WeatherAPP___Core.Models.Main viewData = new WeatherAPP___Core.Models.Main();
+            foreach (var col in _context.mains.ToList())
+            {
+                WeatherAPP___Core.Models.Main element = new WeatherAPP___Core.Models.Main();
+                element.Temperature = col.Temperature;
+                element.Pressure = col.Pressure;
+                element.Humidity = col.Humidity;
+                element.TempMin = col.TempMin;
+                element.TempMax = col.TempMax;
+                element.Percepita = col.Percepita;
+
+                viewData.(element);
+            }*/
+            var viewData = _context.mains.ToList();
+
+            return View(viewData);
         }
     }
 }
