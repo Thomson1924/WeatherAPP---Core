@@ -54,7 +54,7 @@ namespace WeatherAPP___Core.Controllers
 
         public IActionResult Result(LocationModel location)
         {
-            return View();
+            return RedirectToAction("ForecastData", "Home", new {  id = Math.Round(location.Latitude,3) +","+Math.Round(location.Longitude,3)});
         }
 
         public IActionResult WeatherData(string id)
