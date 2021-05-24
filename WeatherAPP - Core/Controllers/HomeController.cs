@@ -54,13 +54,13 @@ namespace WeatherAPP___Core.Controllers
 
         public IActionResult Result(LocationModel location)
         {
-            return RedirectToAction("ForecastData", "Home", new {  id = Math.Round(location.Latitude,3) +","+Math.Round(location.Longitude,3)});
+            return RedirectToAction("WeatherData", "Home", new { lat=Math.Round(location.Latitude,3) , lon=Math.Round(location.Longitude,3)});
         }
 
-        public IActionResult WeatherData(string id)
-        {
-        
-            string prova = "https://api.openweathermap.org/data/2.5/weather?q=" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
+        public IActionResult WeatherData(double lat, double lon, LocationModel location)
+        { 
+
+            string prova = "https://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon=" + lon + "&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results = _rs.GetWeatherData(prova).Result;
 
             results.Main.User = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;   
