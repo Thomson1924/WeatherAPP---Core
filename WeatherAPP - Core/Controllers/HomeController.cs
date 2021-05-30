@@ -23,12 +23,14 @@ namespace WeatherAPP___Core.Controllers
         public RestService _rs { get; set; }
         public readonly ISave _save;
         private readonly UserManager<IdentityUser> _userManager;
-        public HomeController(ILogger<HomeController> logger, ISave save, UserManager<IdentityUser> userManager)
+        public ApplicationDbContext _context;
+        public HomeController(ILogger<HomeController> logger, ISave save, UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
             _logger = logger;
             _save = save;
             _rs = new RestService();
             _userManager = userManager;
+            _context = context;
 
         }
 
@@ -58,13 +60,15 @@ namespace WeatherAPP___Core.Controllers
 
         public IActionResult WeatherData(string id)
         {
-        
             string prova = "https://api.openweathermap.org/data/2.5/weather?q=" + id + "&lang=pl&units=metric&appid=0770f1c5ab85fe7ddff0cf0e60b1efac";
             WeatherData results = _rs.GetWeatherData(prova).Result;
 
-            results.Main.User = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;   
+            
+            var currentUser = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+            results.Main.User = currentUser;
+            results.Main.CityName = results.Title;
             _save.SaveAsync(results.Main);
-
+            
             return View(results);
         }
         public IActionResult HistoricalData(string id)
@@ -82,6 +86,27 @@ namespace WeatherAPP___Core.Controllers
 
             return View(results);
         }
+        [Authorize]
+        public IActionResult MyWeather()
+        {
+            /*WeatherAPP___Core.Models.Main viewData = new WeatherAPP___Core.Models.Main();
+            foreach (var col in _context.mains.ToList())
+            {
+                WeatherAPP___Core.Models.Main element = new WeatherAPP___Core.Models.Main();
+                element.Temperature = col.Temperature;
+                element.Pressure = col.Pressure;
+                element.Humidity = col.Humidity;
+                element.TempMin = col.TempMin;
+                element.TempMax = col.TempMax;
+                element.Percepita = col.Percepita;
 
+                viewData.(element);
+            }*/
+            var currentUser = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+
+            var viewData = _context.mains.Where(q => q.User == currentUser).Select(p => p).ToList();
+
+            return View(viewData);
+        }
     }
 }

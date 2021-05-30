@@ -62,6 +62,7 @@ namespace WeatherAPP___Core.Models
     public class Main
     {
         public int Id { get; set; }
+        public string CityName { get; set; }
         [JsonProperty("temp")]
         public double Temperature { get; set; }
 

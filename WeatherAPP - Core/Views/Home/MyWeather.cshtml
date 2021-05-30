@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WeatherAPP___Core.Models.Main>
+
+@{
+    ViewData["Title"] = "MyWeather";
+}
+
+<h1>MyWeather - historical search</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temperature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pressure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percepita)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pressure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Humidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Percepita)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
