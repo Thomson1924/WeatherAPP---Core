@@ -29,6 +29,7 @@
     <label for="usr">Insert your City</label>
     <input type="text" class="form-control" id="usr" text-center>
     <br />
+    <button onclick="getLocation()" class="btn btn-info">Location</button>
     <input type="button" class="btn btn-info" id="WeatherHistorical" value="Get Historical Weather" />
     <input type="button" class="btn btn-info" id="WeatherSearch" value="Check the weather" />
     <input type="button" class="btn btn-info" id="WeatherForecast" value="Get Forecast" />
@@ -93,8 +94,8 @@
         function showPosition(position) {
             loc.value = position.coords.latitude;
             loc2.value = position.coords.longitude;
-            locform.submit();
-        }
+            @*locform.submit();*@
+            }
 
     </script>
 }
