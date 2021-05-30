@@ -8,6 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/custom.css"/>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -16,40 +17,41 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body>
+<body class="custom-background">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-cloud-sun-rain"></i>WeatherApp</a>
+        <nav class="bg-transparent navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-3 text-white">
+            <div class="container text-white">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-cloud-sun-rain"></i>WeatherApp</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse text-white">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <li class="nav-item text-white">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MyWeather">MyWeather</a>
+                        <li class="nav-item text-white">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="MyWeather">MyWeather</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container ">
+        <main role="main" class="pb-0">
             @RenderBody()
-            <hr />
-            <footer>
-
-                <p>&copy; 2021 - WeatherApp</p>
-
-            </footer>
+        </main>
     </div>
+
+    <footer class=" footer text-white">
+        <div class="container text-center text-xl-center ">
+            &copy; 2021 - WEATHER APP  <a asp-area="" asp-controller="Home"></a>
+        </div>
+    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
