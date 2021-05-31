@@ -7,7 +7,7 @@
     @*<h1 class="display-4">Test pobierania lokalizacji</h1>*@
 </div>
 <html>
-<body onload="getLocation()">
+<body>
     <div class="row" style="display:none;">
         <div class="col-md-4">
             <form asp-action="Result" method="get" enctype="multipart/form-data" id="LocationForm">
@@ -90,7 +90,7 @@
         function showPosition(position) {
             loc.value = position.coords.latitude;
             loc2.value = position.coords.longitude;
-            @*locform.submit();*@
+            locform.submit();
             }
 
     </script>
