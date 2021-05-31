@@ -66,10 +66,10 @@ namespace WeatherAPP___Core.Controllers
             WeatherData results = _rs.GetWeatherData(prova).Result;
 
             
-            var currentUser = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
+            /*var currentUser = _userManager.FindByNameAsync(HttpContext.User.Identity.Name).Result;
             results.Main.User = currentUser;
             results.Main.CityName = results.Title;
-            _save.SaveAsync(results.Main);
+            _save.SaveAsync(results.Main);*/
             
             return View(results);
         }
