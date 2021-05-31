@@ -1,42 +1,50 @@
 ﻿@model WeatherAPP___Core.Models.HistoricalData.Rooth
 @{ Layout = "_Layout"; ViewBag.Title = "Historical";}
-
-@try
-{
+<div style="background-color: white; opacity:0.8; padding:20px; border-radius:10px">
     <h2>Weather Info </h2>
+    <div class="container" style="height:45rem; overflow-y:scroll">
+        @try
+        {
 
 
 
-    <table class="table table-sm table-striped table-bordered m-2 text-white">
-        <thead><tr><th>Day</th><th>Month</th><th>Temp AVG</th><th>Pressure AVG</th><th>Wind AVG</th></tr></thead>
-        <tbody>
-            @foreach (var item in Model.result)
-            {
-                
-                <tr>
 
-                    <td>@item.day</td>
-                    <td>@item.month</td>
-                    <td>@item.temp.median K  </td>
-                    <td>@item.pressure.median hPa</td>
-                    <td>@item.wind.median km/h</td>
-                    
-                    
-                    
-                </tr>
-            }
+            <table class="table table-sm table-striped table-bordered m-2 text-black">
+                <thead><tr><th>Day</th><th>Month</th><th>Temp AVG</th><th>Pressure AVG</th><th>Wind AVG</th></tr></thead>
+                <tbody>
+                    @foreach (var item in Model.result)
+                    {
 
-        </tbody>
-    </table>
+                        <tr>
+
+                            <td>@item.day</td>
+                            <td>@item.month</td>
+                            <td>@item.temp.median K  </td>
+                            <td>@item.pressure.median hPa</td>
+                            <td>@item.wind.median km/h</td>
+
+
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            <br />
+
+            <br />
+        }
+        catch
+        {
+
+            <h1>I am sorry, I can't find your city :(</h1>
+
+            <br />
+            <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>}
+    </div>
     <br />
-    <br />
-    <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
-    <br />
-}
-catch
-{
-
-    <h1>I am sorry, I can't find your city :(</h1>
-
-    <br />
-    <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>}
+    <div class="text-center">
+        <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
+    </div>
+</div>

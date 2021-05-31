@@ -19,8 +19,9 @@
     </environment>
 </head>
 <body class="custom-background">
+
     <header>
-        <nav class="bg-transparent navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-3 text-white">
+        <nav class="bg-transparent navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-4 text-white">
             <div class="container text-white">
                 @*<a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-cloud-sun-rain"></i>WeatherApp</a>*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -42,7 +43,7 @@
             </div>
         </nav>
     </header>
-    <div class="container ">
+    <div class="container">
         <main role="main" class="pb-0">
             @RenderBody()
         </main>
@@ -53,6 +54,10 @@
             &copy; 2021 - WEATHER APP  <a asp-area="" asp-controller="Home"></a>
         </div>
     </footer>
+
+    @*<div id="bg">
+        <img src="~/lib/tornado.gif" alt="">
+    </div>*@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -76,5 +81,6 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

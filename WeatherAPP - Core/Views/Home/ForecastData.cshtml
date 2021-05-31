@@ -1,14 +1,18 @@
 ﻿@model WeatherAPP___Core.Models.ForecastData.Root
 @{ Layout = "_Layout"; ViewBag.Title = "Forecast";}
+<div style="background-color: white; opacity:0.8; padding:20px; border-radius:10px">
+    <h2>Weather Info </h2>
+    <div class="container" style="height:50rem; overflow-y:scroll">
+        @try
+        {
 
-    @try
-    {
-        <h2>Weather Info </h2>
 
 
-        
 
-            <table class="table table-sm table-striped table-bordered m-2 text-white">
+
+
+
+            <table class="table table-sm table-striped table-bordered m-2 text-black">
                 <thead><tr><th>Time</th><th>Temperature</th><th>Humidity</th><th>Wind</th><th>Wind Direction</th><th>Pressure</th><th>Description</th></tr></thead>
                 <tbody>
                     @foreach (var item in Model.list)
@@ -34,14 +38,19 @@
                 </tbody>
             </table>
             <br />
-            <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
+
             <br />
-            }
-            catch
-            {
+        }
+        catch
+        {
 
             <h1>I am sorry, I can't find your city :(</h1>
 
             <br />
             <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>}
-     
+    </div>
+    <br />
+    <div class="text-center">
+    <a asp-action="" class="btn btn-sm btn-primary">Search Again!</a>
+</div>
+</div>
